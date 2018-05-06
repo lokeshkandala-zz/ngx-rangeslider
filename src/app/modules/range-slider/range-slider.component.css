@@ -1,0 +1,52 @@
+div{
+    box-sizing: border-box;
+}
+
+.slidersContainer
+{
+    position:relative;
+    margin:20px 0 20px 0;
+}
+.slider
+{
+    position:absolute;
+    cursor:pointer;
+    bottom:-50%;
+}
+.minSlider
+{
+    z-index:1010;
+}
+.maxSlider
+{
+    z-index:1015;
+}
+.sliderHilight{
+    position:absolute;
+    z-index:1005;
+    height:inherit;
+}
+
+.dbarClass{
+    width:100%;
+    height:10px;
+    background:lightgray;
+}
+
+.dsliderClass
+{
+    width:20px;
+    height:20px;
+    background:white;    
+    border:1px solid royalblue;
+}
+.dheilightClass{
+    background:royalblue;
+}
+.tooltipText{
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    bottom: 72%;
+    left: 13%;
+}

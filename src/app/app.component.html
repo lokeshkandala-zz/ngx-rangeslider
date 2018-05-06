@@ -1,0 +1,155 @@
+<div class="container">
+    <div class="page-header">
+      <h1>Angular Range Slider</h1>      
+    </div>
+    <article>
+        <ul>
+            <li>Customizable</li>
+            <li>Keyboard Support</li>
+        </ul>
+    </article>
+    <article>
+        <h4 class="mBottom">Slider with Step</h4>
+        <range-slider [min]="min1" [max]="max1" [step]="step" [(ngModel)]="stepRange" (onRangeChange)="rangeChanged($event)" [heilightClass]="'stepHeilightClass'" [barClass]="'stepBarClass'" [sliderClass]="'stepSliderClass'"></range-slider>
+        
+        <ul class="nav nav-tabs mtop">
+                <li class="active"><a data-toggle="tab" href="#HTML3">HTML</a></li>
+                <li><a data-toggle="tab" href="#ts3">.ts</a></li>
+                <li><a data-toggle="tab" href="#css2">styles.css</a></li>
+              </ul>
+              <div class="tab-content">
+                <div id="HTML3" class="tab-pane fade in active">
+                        <pre>         &lt;range-slider [min]="min1" [max]="max1" step="step" (onRangeChange)="rangeChanged($event)" [(ngModel)]="stepRange" [heilightClass]="'heilightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'">        &lt;/range-slider>
+                            </pre>
+                </div>
+                <div id="ts3" class="tab-pane fade">
+                        <pre>
+                                min=-10;
+                                max=50;
+                                step=5;
+                                stepRange=[0,40];
+                        </pre>
+                </div>
+                <div id="css2" class="tab-pane fade">
+                    <pre>
+                            .stepBarClass &#123;
+                                width:90%;
+                                height:10px;
+                                background:lightgray;
+                                border-radius:5px;
+                                &#125;
+                            
+                            .stepSliderClass
+                            &#123;
+                                width:20px;
+                                height:20px;
+                                background:lightgray;
+                                border-radius:50%;    
+                                border:1px solid royalblue;
+                                bottom:-50% !important;
+                                &#125;
+                            .stepHeilightClass&#123;
+                                background:royalblue;
+                                &#125;
+                    </pre>
+                </div>
+              </div>
+        
+    </article>
+    <article>
+        <h4 class="mBottom" >Defalut Slider</h4>
+        <range-slider [min]="1000" [max]="2000" [step]="100" [(ngModel)]="range" (onRangeChange)="rangeChanged($event)"></range-slider>
+        
+        
+        <ul class="nav nav-tabs mtop">
+            <li class="active"><a data-toggle="tab" href="#HTML1">HTML</a></li>
+            <li><a data-toggle="tab" href="#ts1">.ts</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="HTML1" class="tab-pane fade in active">
+                    <pre>         &lt;range-slider [min]="min" [max]="max" [step]="100" [(ngModel)]="range" (onRangeChange)="rangeChanged($event)">        &lt;/range-slider>
+                        </pre>
+            </div>
+            <div id="ts1" class="tab-pane fade">
+<pre>
+min=0;
+max=60;
+range=[6,20];
+rangeChanged(event:any)&#123;
+    console.log(event);
+    &#125;
+                  </pre>
+            </div>
+          </div>
+        
+    </article>     
+    <article>
+        <h4 class="mBottom" >Two way binding</h4>
+        <range-slider [min]="-20" [max]="60" [(ngModel)]="twoWayRange" [toolTips]="[false,false]" (ngModelChange)="changed()"></range-slider>
+        <div style="display:inline-block">Min:<input type="number" [(ngModel)]="twoWayRange[0]" (ngModelChange)="changed()"></div>
+        <div style="display:inline-block">Max:<input type="number" [(ngModel)]="twoWayRange[1]" (ngModelChange)="changed()"></div>
+         <ul class="nav nav-tabs mtop">
+                <li class="active"><a data-toggle="tab" href="#HTML2">HTML</a></li>
+                <li><a data-toggle="tab" href="#ts2">.ts</a></li>
+              </ul>
+              <div class="tab-content">
+                <div id="HTML2" class="tab-pane fade in active">
+                    <pre> &lt;range-slider [min]="min" [max]="max" [toolTips]="[false,false]" [(ngModel)]="twoWayRange">        &lt;/range-slider>
+                    </pre>
+                </div>
+                <div id="ts2" class="tab-pane fade">
+                      <pre>
+                          min=-20;
+                          max=60;
+                          twoWayRange=[10,30];
+                          //oninput change you need to do
+                          changed()&#123;
+                            this.twoWayRange=[...this.twoWayRange];
+                            &#125;
+                      </pre>
+                </div>
+              </div> 
+    </article> 
+    <article>
+        <h4 class="mBottom" >Custom Style Slider</h4>
+        <range-slider [min]="min" [max]="max" [(ngModel)]="customStyleRange" [step]="1" [heilightClass]="'heilightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'"></range-slider>
+        <ul class="nav nav-tabs mtop">
+                <li class="active"><a data-toggle="tab" href="#HTML3">HTML</a></li>
+                <li><a data-toggle="tab" href="#css1">styles.css</a></li>
+              </ul>
+              <div class="tab-content">
+                <div id="HTML3" class="tab-pane fade in active">
+                        <pre>         &lt;range-slider [min]="min" [max]="max" [step]="1" [(ngModel)]="customStyleRange" [heilightClass]="'heilightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'">        &lt;/range-slider>
+                            </pre>
+                </div>
+                <div id="css1" class="tab-pane fade">
+                    <pre>
+                        .barClass &#123;
+                            width:80%;
+                            height:5px;
+                            background:lightgray;
+                            border-radius:5px;
+                            &#125;
+                        
+                        .sliderClass
+                        &#123;
+                            width:14px;
+                            height:14px;
+                            background:white;
+                            border-radius:50%;    
+                            border:1px solid blue;
+                            bottom:-72% !important;
+                            &#125;
+                        .heilightClass&#123;
+                            background:blue;
+                            &#125;
+                    </pre>
+                </div>
+              </div>
+        
+    </article> 
+     
+  </div>
+  
+
+

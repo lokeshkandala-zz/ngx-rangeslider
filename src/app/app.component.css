@@ -1,0 +1,16 @@
+article,div{
+    box-sizing:border-box;
+}
+pre{
+    user-select: all;
+}
+article{
+    margin-bottom:40px;
+}
+.mtop
+{
+    margin-top:44px;
+}
+.mBottom{
+    margin-bottom:40px;
+}

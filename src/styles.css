@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+.barClass{
+    width:80%;
+    height:5px;
+    background:lightgray;
+    border-radius:5px;
+}
+
+.sliderClass
+{
+    width:14px;
+    height:14px;
+    background:white;
+    border-radius:50%;    
+    border:1px solid blue;
+    bottom:-72% !important;
+}
+.heilightClass{
+    background:blue;
+}
+.stepBarClass{
+    width:90%;
+    height:10px;
+    background:lightgray;
+    border-radius:5px;
+}
+
+.stepSliderClass
+{
+    width:20px;
+    height:20px;
+    background:lightgray;
+    border-radius:50%;    
+    border:1px solid royalblue;
+    bottom:-50% !important;
+}
+.stepHeilightClass{
+    background:royalblue;
+}

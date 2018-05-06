@@ -1,0 +1,24 @@
+
+<div (clickOutside)="clickedOutside($event)" id="bar"  #bar   class="slidersContainer dbarClass" 
+  (click)="clickedOnBar($event)"  (touchmove)="touchMove($event)"
+  (touchend)="mouseUp($event)">
+
+      
+
+      <span style="position:absolute" *ngIf="range && toolTip && toolTips[0]"  [style.top.px]="toolTipTop" [style.left.px]="minSliderLeft" >{{range[0]}}</span>
+      <span style="position:absolute" *ngIf="range && toolTip && toolTips[1]" [style.top.px]="toolTipTop" [style.left.px]="maxSliderLeft" >{{range[1]}}</span>
+      <span style="position:absolute" *ngIf="range && combineToolTip" [style.top.px]="toolTipTop" [style.left.px]="combineToolTipLeft"  >{{range[0]}}-{{range[1]}}</span> 
+
+  <div #minSlider   class="slider minSlider dsliderClass" (mousedown)="minMouseDown($event)"  
+  [style.left.px]="minSliderLeft" (mouseup)="mouseUp($event)" (touchstart)="minTouched($event)">
+  
+</div>
+
+  <div #maxSlider class="slider maxSlider dsliderClass" (mousedown)="maxMouseDown($event)" 
+   [style.left.px]="maxSliderLeft" (mouseup)="mouseUp($event)" (touchstart)="maxTouched($event)">
+   
+  </div>
+
+  <div  #sliderHilight class="sliderHilight dheilightClass" (click)="clickedOnHeilight($event)"
+  [style.width.px]="heilightWidth" [style.left.px]="heilightLeft" ></div>
+  </div>
