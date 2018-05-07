@@ -1,6 +1,6 @@
 {
-  "name": "ngx-rangeslider",
-  "version": "1.0.0",
+  "name": "ngx-rangeslider-component",
+  "version": "1.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

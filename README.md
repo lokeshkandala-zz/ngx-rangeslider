@@ -6,7 +6,7 @@ Live Demo : https://lokeshkandala.github.io/ngx-rangeslider/
 To install this library, run:
 
 ```bash
-$ npm install ngx-rangeslider --save
+$ npm install ngx-rangeslider-component --save
 ```
 
 

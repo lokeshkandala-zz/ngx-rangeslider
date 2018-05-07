@@ -14,7 +14,7 @@ const noop = () => {};
     { provide: NG_VALIDATORS, useExisting: RangeSliderComponent, multi: true }    
   ]
 })
-export class RangeSliderComponent implements ControlValueAccessor,OnChanges {
+export class RangeSliderComponent implements ControlValueAccessor {
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2,
     private iterableDiffers: IterableDiffers) { 
@@ -133,13 +133,7 @@ export class RangeSliderComponent implements ControlValueAccessor,OnChanges {
     }
 
   }
-  ngOnChanges(changes:SimpleChanges)
-  {
-    if(changes.range)
-    {
-      console.log(this.range);
-    }
-  }
+ 
 
   update(range: number[]) {
     this.range = [...range];
