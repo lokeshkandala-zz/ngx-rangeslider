@@ -1,11 +1,10 @@
-import { Component, ViewChild, ElementRef, HostListener, OnInit,OnChanges ,Renderer2, AfterViewInit, Input, Output, EventEmitter, SimpleChanges} from '@angular/core';
+import { Component, ViewChild, ElementRef, HostListener, OnInit,OnChanges ,Renderer2, AfterViewInit,IterableDiffers, Input, Output, EventEmitter, SimpleChanges} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, Validator, NG_VALIDATORS,FormControl } from '@angular/forms';
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
   LEFT_ARROW = 37
 }
-const noop = () => {
-};
+const noop = () => {};
 @Component({
   selector: 'range-slider',
   templateUrl: './range-slider.component.html',
@@ -15,9 +14,22 @@ const noop = () => {
     { provide: NG_VALIDATORS, useExisting: RangeSliderComponent, multi: true }    
   ]
 })
-export class RangeSliderComponent implements ControlValueAccessor {
+export class RangeSliderComponent implements ControlValueAccessor,OnChanges {
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
+  constructor(private elementRef: ElementRef, private renderer: Renderer2,
+    private iterableDiffers: IterableDiffers) { 
+      this.iterableDiffer = this.iterableDiffers.find([]).create(null);
+    }
+
+  ngDoCheck() {
+    let changes = this.iterableDiffer.diff(this.range);
+    if (changes) {
+      this.onChangeCallback(this.range);
+      this.onTouchedCallback(this.range);
+      this.onRangeChange.emit(this.range);
+    }
+}
+  private iterableDiffer:any;
   private valToPixelFactor: number;
   private minSliderClicked = false;
   maxSliderClicked = false;
@@ -47,7 +59,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
   combineToolTipWidth:number;    
   toolTipLeft:number;
   private onTouchedCallback: (_: any) => void = noop;
-    private onChangeCallback: (_: any) => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
   @Input() min: number;
   @Input() max: number;
   @Input() toolTips=[true,true];
@@ -121,6 +133,13 @@ export class RangeSliderComponent implements ControlValueAccessor {
     }
 
   }
+  ngOnChanges(changes:SimpleChanges)
+  {
+    if(changes.range)
+    {
+      console.log(this.range);
+    }
+  }
 
   update(range: number[]) {
     this.range = [...range];
@@ -170,14 +189,14 @@ export class RangeSliderComponent implements ControlValueAccessor {
     this.registerOnTouched=onTouched;
   }
 
-  public validate(c: FormControl): any {
+  validate(): any {
     return null;
 }
 getlength(num) {
     return  String(num).match(/\d/g).length;
 }
   getWidth() {
-    if (this.bar && this.minSlider && this.range) {
+    if (this.bar && this.minSlider && this.range && this.range[0]) {
       this.sliderWidth = this.minSlider.nativeElement.offsetWidth;
       this.sliderHeight=this.minSlider.nativeElement.offsetHeight;
       this.toolTipTop=(this.sliderHeight+10)*-1;
@@ -221,7 +240,8 @@ getlength(num) {
     if (targetId === 'bar') {
       if (left < this.minSliderLeft) {
         let value = this.pixToVal(this.min, left);
-        this.range[0] = this.stepr(value);
+        const finalVal=this.stepr(value);
+        this.range[0] = finalVal <= this.min?this.min:finalVal;
         this.minSliderLeft = this.valToPixel(this.range[0]);
       }
       else if (left > this.maxSliderLeft) {
@@ -235,10 +255,7 @@ getlength(num) {
           this.maxSliderLeft = this.valToPixel(this.range[1]);;
         }
       }
-    }
-    this.onChangeCallback(this.range);
-    this.onTouchedCallback(this.range);
-    this.onRangeChange.emit(this.range);    
+    }    
     this.heilightDimensions();
   }
 
@@ -258,10 +275,7 @@ getlength(num) {
       let value = this.pixToVal(this.min, orgLeft);
       this.range[1] = this.stepr(value);
       this.maxSliderLeft = this.valToPixel(this.range[1]);
-    }
-    this.onChangeCallback(this.range);
-    this.onTouchedCallback(this.range);
-    this.onRangeChange.emit(this.range);    
+    }   
     this.heilightDimensions();
   }
   pixToVal(min: number, left: number): number {
@@ -269,19 +283,6 @@ getlength(num) {
     return value;
   }
   stepr(value: number): number {
-    //   let value=this.step?prevVal:orgVal;
-    //   if(this.step)
-    //   {
-    //        let diff=Math.abs(orgVal-prevVal);
-    //        let inc=((orgVal-prevVal) > 0);
-    //        if(diff > (this.step*0.6))
-    //        {
-    //          value=inc ? prevVal+this.step:prevVal-this.step;
-    //        }
-    // console.log(prevVal,orgVal,value,diff); 
-    //console.log(value);     
-    // let isNeg=value < 0?true:false;
-    //  value=Math.abs(value);
     if (this.step) {
       let fin = value - Math.floor(value);
       if (fin >= 0.5) {
@@ -322,7 +323,8 @@ getlength(num) {
           this.range[0] = this.min;
         }
         else {
-          this.range[0] = this.stepr(value);
+          const finalVal=this.stepr(value);
+          this.range[0] = finalVal <= this.range[1]?finalVal:this.range[1];
           this.minSliderLeft = this.valToPixel(this.range[0]);
         }
       }
@@ -343,9 +345,6 @@ getlength(num) {
         }
       }
     }
-    this.onChangeCallback(this.range);
-    this.onTouchedCallback(this.range);
-    this.onRangeChange.emit(this.range);
     this.heilightDimensions();
   }
     return false;
@@ -410,10 +409,7 @@ getlength(num) {
           this.maxSliderIntialLeft = this.maxSliderLeft;
         }
       }
-    }
-    this.onChangeCallback(this.range);
-    this.onTouchedCallback(this.range);
-    this.onRangeChange.emit(this.range);    
+    }  
     this.heilightDimensions();
   }
 }

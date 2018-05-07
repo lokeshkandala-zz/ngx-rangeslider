@@ -112,7 +112,7 @@ rangeChanged(event:any)&#123;
     </article> 
     <article>
         <h4 class="mBottom" >Custom Style Slider</h4>
-        <range-slider [min]="min" [max]="max" [(ngModel)]="customStyleRange" [step]="1" [heilightClass]="'heilightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'"></range-slider>
+         <range-slider [min]="min" [max]="max" [(ngModel)]="customStyleRange" [step]="1" [heilightClass]="'heilightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'"></range-slider>
         <ul class="nav nav-tabs mtop">
                 <li class="active"><a data-toggle="tab" href="#HTML3">HTML</a></li>
                 <li><a data-toggle="tab" href="#css1">styles.css</a></li>
@@ -148,6 +148,39 @@ rangeChanged(event:any)&#123;
               </div>
         
     </article> 
+    
+    <article>
+        <h4>Using with Template Driven Forms</h4>
+        <ul class="nav nav-tabs mtop">
+            <li class="active"><a data-toggle="tab" href="#HTML4">HTML</a></li>
+            <li><a data-toggle="tab" href="#ts4">.ts</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="HTML4" class="tab-pane fade in active">
+                <pre> &lt;form (ngSubmit)="onSubmit()" #dummyForm="ngForm" >
+                        &lt;div class="form-group">
+                        &lt;label for="name">Range&lt;/label>
+                        &lt;range-slider [min]="min" [max]="max"
+                        [step]="4" [(ngModel)]="dumyForm.range" 
+                        (onRangeChange)="rangeChanged($event)"
+                        name="range" #rangef="ngModel" required >
+                        &lt;/range-slider>
+                        &lt;/div>
+                        &lt;button type="submit" class="btn btn-success" [disabled]="!dummyForm.valid">Submit&lt;/button>
+                        &lt;/form>
+                </pre>
+            </div>
+            <div id="ts4" class="tab-pane fade">
+                  <pre>
+                        dumyForm = &#123;
+                            range: [9,38]
+                            &#125;
+                  </pre>
+            </div>
+          </div>
+        
+
+    </article>
      
   </div>
   
