@@ -15,7 +15,7 @@ $ npm install ngx-rangeslider-component --save
 Import `RangeSliderModule ` in the root module
 
 ```ts
-import { RangeSliderModule  } from 'ngx-rangeslider';
+import { RangeSliderModule  } from 'ngx-rangeslider-component';
 
 @NgModule({
   imports: [

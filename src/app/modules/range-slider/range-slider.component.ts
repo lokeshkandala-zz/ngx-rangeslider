@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, HostListener, OnInit,OnChanges ,Renderer2, AfterViewInit,IterableDiffers, Input, Output, EventEmitter, SimpleChanges} from '@angular/core';
+import { Component, ViewChild, ElementRef, HostListener,forwardRef, OnInit,OnChanges ,Renderer2, AfterViewInit,IterableDiffers, Input, Output, EventEmitter, SimpleChanges} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, Validator, NG_VALIDATORS,FormControl } from '@angular/forms';
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
@@ -10,8 +10,10 @@ const noop = () => {};
   templateUrl: './range-slider.component.html',
   styleUrls: ['./range-slider.component.css'],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, useExisting: RangeSliderComponent, multi: true },
-    { provide: NG_VALIDATORS, useExisting: RangeSliderComponent, multi: true }    
+    { provide: NG_VALUE_ACCESSOR, 
+      useExisting: forwardRef(() => RangeSliderComponent),
+       multi: true },
+    { provide: NG_VALIDATORS, useExisting: forwardRef(() => RangeSliderComponent), multi: true }    
   ]
 })
 export class RangeSliderComponent implements ControlValueAccessor {
@@ -190,7 +192,7 @@ getlength(num) {
     return  String(num).match(/\d/g).length;
 }
   getWidth() {
-    if (this.bar && this.minSlider && this.range && this.range[0]) {
+    if (this.bar && this.minSlider && this.range && this.range[0] !== undefined) {
       this.sliderWidth = this.minSlider.nativeElement.offsetWidth;
       this.sliderHeight=this.minSlider.nativeElement.offsetHeight;
       this.toolTipTop=(this.sliderHeight+10)*-1;
@@ -210,7 +212,8 @@ getlength(num) {
   heilightDimensions() {
     this.heilightLeft = this.minSliderLeft + (this.sliderWidth / 2);
     this.heilightWidth = this.maxSliderLeft - this.minSliderLeft;
-
+    if(this.range[0] !== undefined)
+    {
     this.minToolTipWidth=this.getlength(this.range[0].toString());
     let cond=this.minToolTipWidth*8+this.minSliderLeft+8;
     if(cond > this.maxSliderLeft  && this.toolTips[0] && this.toolTips[1] ) {
@@ -224,6 +227,7 @@ getlength(num) {
       this.toolTip=true;
       this.combineToolTip=false;
     }
+  }
   }
 
   clickedOnBar(event: any) {
