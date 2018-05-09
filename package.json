@@ -1,7 +1,8 @@
 {
   "name": "ngx-rangeslider-component",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
+  "description": "Angular rangeslider component",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -47,14 +48,13 @@
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
   },
-  "description": "Live Demo : https://lokeshkandala.github.io/ ## Installation",
   "main": "karma.conf.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lokeshkandala/ngx-rangeslider.git"
   },
   "keywords": [
-    "ngx-rangeslider-component", "rangeslider","angular","ngx"
+    "ngx-rangeslider-component", "rangeslider","angular","ngx","input","range"
   ],
   "author": "Lokesh",
   "bugs": {

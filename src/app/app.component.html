@@ -6,6 +6,8 @@
         <ul>
             <li>Customizable</li>
             <li>Keyboard Support</li>
+            <li>Mobile Friendly</li>
+            <li>works with Template driven Forms and Reactive Forms</li>
         </ul>
     </article>
     <article>
@@ -160,10 +162,7 @@ rangeChanged(event:any)&#123;
                 <pre> &lt;form (ngSubmit)="onSubmit()" #dummyForm="ngForm" >
                         &lt;div class="form-group">
                         &lt;label for="name">Range&lt;/label>
-                        &lt;range-slider [min]="min" [max]="max"
-                        [step]="4" [(ngModel)]="dumyForm.range" 
-                        (onRangeChange)="rangeChanged($event)"
-                        name="range" #rangef="ngModel" required >
+                        &lt;range-slider [min]="min" [max]="max"[step]="4" [(ngModel)]="dumyForm.range" (onRangeChange)="rangeChanged($event)" name="range" #rangef="ngModel" required >
                         &lt;/range-slider>
                         &lt;/div>
                         &lt;button type="submit" class="btn btn-success" [disabled]="!dummyForm.valid">Submit&lt;/button>
