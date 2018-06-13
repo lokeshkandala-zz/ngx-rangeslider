@@ -12,7 +12,7 @@
     </article>
     <article>
         <h4 class="mBottom">Slider with Step</h4>
-        <range-slider [min]="min1" [max]="max1" [step]="step" [(ngModel)]="stepRange" (onRangeChange)="rangeChanged($event)" [heilightClass]="'stepHeilightClass'" [barClass]="'stepBarClass'" [sliderClass]="'stepSliderClass'"></range-slider>
+        <range-slider [min]="min1" [max]="max1" [step]="step" [(ngModel)]="stepRange" (onRangeChange)="rangeChanged($event)" [highlightClass]="'stephighlightClass'" [barClass]="'stepBarClass'" [sliderClass]="'stepSliderClass'"></range-slider>
         
         <ul class="nav nav-tabs mtop">
                 <li class="active"><a data-toggle="tab" href="#HTML3">HTML</a></li>
@@ -21,7 +21,7 @@
               </ul>
               <div class="tab-content">
                 <div id="HTML3" class="tab-pane fade in active">
-                        <pre>         &lt;range-slider [min]="min1" [max]="max1" [step]="step" (onRangeChange)="rangeChanged($event)" [(ngModel)]="stepRange" [heilightClass]="'heilightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'">        &lt;/range-slider>
+                        <pre>         &lt;range-slider [min]="min1" [max]="max1" [step]="step" (onRangeChange)="rangeChanged($event)" [(ngModel)]="stepRange" [highlightClass]="'highlightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'">        &lt;/range-slider>
                             </pre>
                 </div>
                 <div id="ts3" class="tab-pane fade">
@@ -50,7 +50,7 @@
                                 border:1px solid royalblue;
                                 bottom:-50% !important;
                                 &#125;
-                            .stepHeilightClass&#123;
+                            .stephighlightClass&#123;
                                 background:royalblue;
                                 &#125;
                     </pre>
@@ -114,14 +114,14 @@ rangeChanged(event:any)&#123;
     </article> 
     <article>
         <h4 class="mBottom" >Custom Style Slider</h4>
-         <range-slider [min]="min" [max]="max" [(ngModel)]="customStyleRange" [step]="1" [heilightClass]="'heilightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'"></range-slider>
+         <range-slider [min]="min" [max]="max" [(ngModel)]="customStyleRange" [step]="1" [highlightClass]="'highlightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'"></range-slider>
         <ul class="nav nav-tabs mtop">
                 <li class="active"><a data-toggle="tab" href="#HTML3">HTML</a></li>
                 <li><a data-toggle="tab" href="#css1">styles.css</a></li>
               </ul>
               <div class="tab-content">
                 <div id="HTML3" class="tab-pane fade in active">
-                        <pre>         &lt;range-slider [min]="min" [max]="max" [step]="1" [(ngModel)]="customStyleRange" [heilightClass]="'heilightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'">        &lt;/range-slider>
+                        <pre>         &lt;range-slider [min]="min" [max]="max" [step]="1" [(ngModel)]="customStyleRange" [highlightClass]="'highlightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'">        &lt;/range-slider>
                             </pre>
                 </div>
                 <div id="css1" class="tab-pane fade">
@@ -142,7 +142,7 @@ rangeChanged(event:any)&#123;
                             border:1px solid blue;
                             bottom:-72% !important;
                             &#125;
-                        .heilightClass&#123;
+                        .highlightClass&#123;
                             background:blue;
                             &#125;
                     </pre>

@@ -51,8 +51,8 @@ export class RangeSliderComponent implements ControlValueAccessor {
   toolTip=true;
   combineToolTip=false;
   rangeInPixels: number;
-  heilightLeft: number;
-  heilightWidth: number;
+  highlightLeft: number;
+  highlightWidth: number;
   minSliderTouched = false;
   sliderHeight:number;
   toolTipTop:number;
@@ -81,10 +81,10 @@ export class RangeSliderComponent implements ControlValueAccessor {
   }
   }
 
-  @Input()  heilightClass:string;
-  setHeilightClass(clas:string) {
+  @Input()  highlightClass:string;
+  sethighlightClass(clas:string) {
     if (clas && this.sliderHilight) {
-      this.renderer.removeClass(this.sliderHilight.nativeElement, 'dheilightClass');
+      this.renderer.removeClass(this.sliderHilight.nativeElement, 'dhighlightClass');
       this.renderer.addClass(this.sliderHilight.nativeElement, clas);
     }
   }
@@ -142,7 +142,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
     this.rangeCache=(JSON.parse(JSON.stringify(range)));    
     this.setBarClass(this.barClass);
     this.setSliderClass(this.sliderClass);
-    this.setHeilightClass(this.heilightClass);
+    this.sethighlightClass(this.highlightClass);
     this.getWidth();
   }
   minTouched(event: any) {
@@ -206,12 +206,12 @@ getlength(num) {
         this.minSliderLeft = (this.range[0] - this.min) * this.valToPixelFactor;
         this.maxSliderLeft = (this.range[1] - this.min) * this.valToPixelFactor;
       }
-      this.heilightDimensions();
+      this.highlightDimensions();
     }
   }
-  heilightDimensions() {
-    this.heilightLeft = this.minSliderLeft + (this.sliderWidth / 2);
-    this.heilightWidth = this.maxSliderLeft - this.minSliderLeft;
+  highlightDimensions() {
+    this.highlightLeft = this.minSliderLeft + (this.sliderWidth / 2);
+    this.highlightWidth = this.maxSliderLeft - this.minSliderLeft;
     if(this.range[0] !== undefined)
     {
     this.minToolTipWidth=this.getlength(this.range[0].toString());
@@ -254,14 +254,14 @@ getlength(num) {
         }
       }
     }    
-    this.heilightDimensions();
+    this.highlightDimensions();
   }
 
-  clickedOnHeilight(event: any) {
+  clickedOnhighlight(event: any) {
     this.minSelected = false;
     this.maxSelected = false;
     const left = event.offsetX;
-    const cond = (this.heilightWidth / 2);
+    const cond = (this.highlightWidth / 2);
     if (left <= cond) {
       const orgLeft = this.minSliderLeft + (this.sliderWidth / 2) + left;
       let value = this.pixToVal(this.min, orgLeft);
@@ -274,7 +274,7 @@ getlength(num) {
       this.range[1] = this.stepr(value);
       this.maxSliderLeft = this.valToPixel(this.range[1]);
     }   
-    this.heilightDimensions();
+    this.highlightDimensions();
   }
   pixToVal(min: number, left: number): number {
     let value = Number((min + left * (1 / this.valToPixelFactor)).toFixed(2));
@@ -343,7 +343,7 @@ getlength(num) {
         }
       }
     }
-    this.heilightDimensions();
+    this.highlightDimensions();
   }
     return false;
   }
@@ -408,7 +408,7 @@ getlength(num) {
         }
       }
     }  
-    this.heilightDimensions();
+    this.highlightDimensions();
   }
 }
 }
