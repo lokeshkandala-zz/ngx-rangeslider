@@ -9,12 +9,12 @@
       <span style="position:absolute" *ngIf="range && toolTip && toolTips[1]" [style.top.px]="toolTipTop" [style.left.px]="maxSliderLeft" >{{range[1]}}</span>
       <span style="position:absolute" *ngIf="range && combineToolTip" [style.top.px]="toolTipTop" [style.left.px]="combineToolTipLeft"  >{{range[0]}}-{{range[1]}}</span> 
 
-  <div #minSlider   class="slider minSlider dsliderClass" (mousedown)="minMouseDown($event)"  
+  <div #minSlider   class="dslider minSlider dsliderClass" (mousedown)="minMouseDown($event)"  
   [style.left.px]="minSliderLeft" (mouseup)="mouseUp($event)" (touchstart)="minTouched($event)">
   
 </div>
 
-  <div #maxSlider class="slider maxSlider dsliderClass" (mousedown)="maxMouseDown($event)" 
+  <div #maxSlider class="dslider maxSlider dsliderClass" (mousedown)="maxMouseDown($event)" 
    [style.left.px]="maxSliderLeft" (mouseup)="mouseUp($event)" (touchstart)="maxTouched($event)">
    
   </div>

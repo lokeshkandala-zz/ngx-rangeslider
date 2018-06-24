@@ -12,7 +12,9 @@
     </article>
     <article>
         <h4 class="mBottom">Slider with Step</h4>
-        <range-slider [min]="min1" [max]="max1" [step]="step" [(ngModel)]="stepRange" (onRangeChange)="rangeChanged($event)" [highlightClass]="'stephighlightClass'" [barClass]="'stepBarClass'" [sliderClass]="'stepSliderClass'"></range-slider>
+        <range-slider [min]="min1" [max]="max1" [step]="step" [(ngModel)]="stepRange" 
+        (onRangeChange)="rangeChanged($event)" [highlightClass]="'stephighlightClass'"
+         [barClass]="'stepBarClass'" [sliderClass]="'stepSliderClass'"></range-slider>
         
         <ul class="nav nav-tabs mtop">
                 <li class="active"><a data-toggle="tab" href="#HTML3">HTML</a></li>
@@ -21,13 +23,13 @@
               </ul>
               <div class="tab-content">
                 <div id="HTML3" class="tab-pane fade in active">
-                        <pre>         &lt;range-slider [min]="min1" [max]="max1" [step]="step" (onRangeChange)="rangeChanged($event)" [(ngModel)]="stepRange" [highlightClass]="'highlightClass'" [barClass]="'barClass'" [sliderClass]="'sliderClass'">        &lt;/range-slider>
+                        <pre>         &lt;range-slider [min]="min1" [max]="max1" [step]="step" (onRangeChange)="rangeChanged($event)" [(ngModel)]="stepRange" [highlightClass]="'stephighlightClass'" [barClass]="'stepBarClass'" [sliderClass]="'stepSliderClass'">        &lt;/range-slider>
                             </pre>
                 </div>
                 <div id="ts3" class="tab-pane fade">
                         <pre>
-                                min=-10;
-                                max=50;
+                                min1=-10;
+                                max1=50;
                                 step=5;
                                 stepRange=[0,40];
                         </pre>

@@ -130,7 +130,6 @@ export class RangeSliderComponent implements ControlValueAccessor {
         }
       }
     }
-    
     this.update(value);
     }
 
@@ -138,6 +137,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
  
 
   update(range: number[]) {
+
     this.range = [...range];
     this.rangeCache=(JSON.parse(JSON.stringify(range)));    
     this.setBarClass(this.barClass);
