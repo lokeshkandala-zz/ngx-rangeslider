@@ -308,7 +308,7 @@ getlength(num) {
     let pixel = this.valToPixelFactor * (value - this.min);
     return pixel;
   }
-  @HostListener('window:mousemove', ['$event'])
+  @HostListener('mousemove', ['$event'])
   mouseMove(event: any) {
     if(this.minSelected || this.maxSelected){
     if (this.minSelected) {
